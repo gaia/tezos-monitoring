@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Feel free to use and modify this script, but please give credit to
+# https://github.com/gaia/tezos-monitoring/
+
 # You need to install JQ: https://stedolan.github.io/jq/
 # For cleaner output use this in your command line
 # export TEZOS_CLIENT_UNSAFE_DISABLE_DISCLAIMER=Y
