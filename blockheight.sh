@@ -4,8 +4,6 @@
 # https://github.com/gaia/tezos-monitoring/
 
 # You need to install JQ: https://stedolan.github.io/jq/
-# For cleaner output use this in your command line
-# export TEZOS_CLIENT_UNSAFE_DISABLE_DISCLAIMER=Y
 
 # Options
 # Use "headers" to print out what each column means
