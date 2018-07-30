@@ -10,7 +10,7 @@
 # Options
 # Use "headers" to print out what each column means
 # Use "status" to get a simple node is behind or up to date output, without numbers.
-# This is useful when you only want to be alerted if your node falls behind by 10 or more block.
+# This is useful when you only want to be alerted if your node falls behind by 10 or more blocks.
 # Anything less than 10 blocks could be a false alarm
 
 # This script will print nothing if the node isn't running
