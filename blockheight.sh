@@ -13,8 +13,6 @@
 # This is useful when you only want to be alerted if your node falls behind by 10 or more blocks.
 # Anything less than 10 blocks could be a false alarm
 
-# This script will print nothing if the node isn't running
-
 # Enter your path to tezos-client here, without a trailing slash
 tc="/home/tezos/tezos/tezos-client"
 
