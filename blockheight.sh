@@ -27,8 +27,7 @@ if [ $? -eq 0 ];then
                 echo -e "DATE      |TIME    |NETWORK|NODE   |BEHIND"
         fi
         network=$(curl -s "http://api6.tzscan.io/v2/blocks?number=1" | jq '.[] | .level')
-        hash=$($tc rpc get /chains/main/blocks?length=1 | tail -n 1 | cut -d \" -f2)
-        node=$($tc rpc get /chains/main/blocks/$hash/helpers/current_level | jq '.level')
+        node=$($tc rpc get /chains/main/blocks/head | jq '.header.level')
         behind=$(( ${network}-${node} ))
         if [[ $flag = "status" ]];then
                 if [[ $behind -gt 10 ]]; then
