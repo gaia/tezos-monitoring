@@ -14,10 +14,10 @@
 # Enter your path to tezos-client here, without a trailing slash
 tc="/home/tezos/tezos/tezos-client"
 
-# Do not modify anything from here down
-
 # This gives you cleaner output. Comment it out then log off/log in to see the warning.
 export TEZOS_CLIENT_UNSAFE_DISABLE_DISCLAIMER=Y
+
+# Do not modify anything from here down
 
 flag=$1
 nodestatus=$(ps -fU tezos | grep "[t]ezos-node run")
