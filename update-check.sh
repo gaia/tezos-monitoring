@@ -8,11 +8,20 @@ tezos_dir="/home/tezos/tezos/"
 
 # Don't change anything from here down
 
-current=$(curl -s --header "PRIVATE-TOKEN: $gitlab_private_token" "https://gitlab.com/api/v4/projects/tezos%2Ftezos/repository/commits/?ref_name=betanet" | jq -r '.[0].id')
+current=$(curl -s --header "PRIVATE-TOKEN: $gitlab_private_token" "https://gitlab.com/api/v4/projects/tezos%2Ftezos/repository/commits/?ref_name=mainnet" | jq -r '.[0].id')
+
 myinstall=$(cd $tezos_dir && git log | head -n 1 | sed 's/commit //')
 
-if [ "$current" == "$myinstall" ]; then
-       echo "Your tezos install is up to date: your install commit hash is $myinstall."
+if [ -z "$current" ]; then
+        # API call failed, retrieve API version from the last successful call
+        current=$(<lastcurrentversion.txt)
 else
-       echo "Your tezos install is behind: repo commit hash is $current, your install is $myinstall."
+        # API call worked, store hash for future use
+        echo $current > lastcurrentversion.txt
+fi
+
+if [ "$current" == "$myinstall" ]; then
+        echo "Your tezos install is up to date or the API didn't respond."
+else
+        echo "Your tezos install is behind: repo commit hash is $current, your install is $myinstall."
 fi
