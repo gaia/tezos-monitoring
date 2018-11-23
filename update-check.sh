@@ -10,7 +10,7 @@ tezos_dir="/home/tezos/tezos/"
 
 current=$(curl -s --header "PRIVATE-TOKEN: $gitlab_private_token" "https://gitlab.com/api/v4/projects/tezos%2Ftezos/repository/commits/?ref_name=mainnet" | jq -r '.[0].id')
 
-myinstall=$(cd $tezos_dir && git log | head -n 1 | sed 's/commit //')
+myinstall=$(cd $tezos_dir && git rev-parse HEAD)
 
 if [ -z "$current" ]; then
         # API call failed, retrieve API version from the last successful call
