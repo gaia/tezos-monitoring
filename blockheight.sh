@@ -30,7 +30,7 @@ if [ $? -eq 0 ];then
                 echo -e "DATE      |TIME    |NETWORK|NODE   |BEHIND"
         fi
         network1=$(curl -s "http://api6.tzscan.io/v2/blocks?number=1" | jq '.[] | .level')
-        network2=$(curl -s "https://betaapi.tezex.info/v2/tzx/blocks/all?limit=1" | jq '.blocks[].level')
+        network2=$(curl -s "https://rpc.tezrpc.me/chains/main/blocks/head/helpers/current_level" | jq '. | .level')
         [ $network1 -gt $network2 ] && network=$network1 || network=$network2
         node=$($tc rpc get /chains/main/blocks/head | jq '.header.level')
         behind=$(( ${network}-${node} ))
